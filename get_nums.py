@@ -1,10 +1,11 @@
 from random import sample
 
+
 def get_numbers_ticket(min, max, quantity):
-    if min < 1 or max > 1000 or quantity > (max - min + 1):
+    if min < 1 or max > 1000 or quantity > (max - min + 1) or min > max:
         return []
-    
-    return sorted(sample(range(min, max+1), quantity))
+
+    return sorted(sample(range(min, max + 1), quantity))
 
 
 lottery_numbers = get_numbers_ticket(1, 49, 6)

@@ -1,19 +1,21 @@
 from datetime import datetime
 
-def main() -> str:
+
+def main():
     while True:
-        date_input = input("Enter a date in format 'YYYY-MM-DD': ")
-        result = get_days_from_today(date_input)
+        input_date = input("Enter a date in format 'YYYY-MM-DD': ")
+        result = get_days_from_today(input_date)
         print(result)
         if "Invalid date" not in result:
             break
 
-def get_days_from_today(date) -> str:
+
+def get_days_from_today(date_str: str) -> str:
 
     try:
-        date_obj = datetime.strptime(date, "%Y-%m-%d")
-        today = datetime.today()
-        difference = (today - date_obj).days
+        input_date = datetime.strptime(date_str, "%Y-%m-%d").date()
+        today = datetime.today().date()
+        difference = (today - input_date).days
 
         if difference > 0:
             return f"The date was {difference} days ago"
@@ -24,5 +26,6 @@ def get_days_from_today(date) -> str:
 
     except ValueError:
         return "Invalid date. Please use the format 'YYYY-MM-DD'."
+
 
 main()
